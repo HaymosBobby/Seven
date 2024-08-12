@@ -24,5 +24,9 @@ class MedicalTestController extends Controller
             $html .= "{$category?->name}: ". implode(', ', $values) ." <br>";
         };
         Notification::route('mail', 'peopleoperations@kompletecare.com')->notify(new MedicalTest($request->user(), $request->validated(), $html));
+
+        return response()->json([
+            'message' => 'Form submitted Successfully',
+        ], 200);
     }
 }
